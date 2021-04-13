@@ -5,10 +5,10 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>pr3.org</groupId>
-  <artifactId>my-app</artifactId>
+  <artifactId>Graph</artifactId>
   <version>1.0-SNAPSHOT</version>
 
-  <name>my-app</name>
+  <name>Graph</name>
   <!-- FIXME change it to the project's website -->
   <url>http://www.example.com</url>
 
@@ -36,7 +36,7 @@
             <configuration>
               <archive>
                <manifest>
-                 <mainClass>org.practica2.aplicacion.Principal</mainClass>
+                 <mainClass>pr3.org.aplicacion.Principal</mainClass>
                </manifest>
               </archive>
               <descriptorRefs>

@@ -4,14 +4,14 @@ ejecutar:
 javadoc:ejecutar
 	mvn javadoc:javadoc
 	
-normal:javadoc
-	java -jar target/Juego_de_la_vida-1.0-SNAPSHOT-jar-with-dependencies.jar 0 10
+add:
+	java -jar target/Graph-1.0-SNAPSHOT-jar-with-dependencies.jar add 4
 
-nave1:javadoc
-	java -jar target/Juego_de_la_vida-1.0-SNAPSHOT-jar-with-dependencies.jar 1 10
+mostrar:
+	java -jar target/Graph-1.0-SNAPSHOT-jar-with-dependencies.jar map 0
 
-nave2:javadoc
-	java -jar target/Juego_de_la_vida-1.0-SNAPSHOT-jar-with-dependencies.jar 2 10
+delete:
+	java -jar target/Graph-1.0-SNAPSHOT-jar-with-dependencies.jar delete 1
 
-file:javadoc
-	java -jar target/Juego_de_la_vida-1.0-SNAPSHOT-jar-with-dependencies.jar 3 10
+file:
+	java -jar target/Graph-1.0-SNAPSHOT-jar-with-dependencies.jar 3 10
