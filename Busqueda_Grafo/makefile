@@ -4,8 +4,8 @@ ejecutar:
 javadoc:ejecutar
 	mvn javadoc:javadoc
 	
-add:
-	java -jar target/Graph-1.0-SNAPSHOT-jar-with-dependencies.jar add 4
+add:ejecutar
+	java -jar target/Graph-1.0-SNAPSHOT-jar-with-dependencies.jar
 
 mostrar:
 	java -jar target/Graph-1.0-SNAPSHOT-jar-with-dependencies.jar map 0
