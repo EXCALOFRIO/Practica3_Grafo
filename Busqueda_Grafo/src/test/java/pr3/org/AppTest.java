@@ -1,7 +1,11 @@
 package pr3.org;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -19,7 +23,19 @@ public class AppTest
         // añadir aristas
     
     }
-    
+    /*
+    @Before
+    public void inicializar(){
+        Graph<Integer> g = new Graph();
+        g.addVertex(3);
+        g.addVertex(9);
+        g.addVertex(4);
+
+        Graph<String> gs = new Graph();
+        gs.addVertex("a");
+        gs.addVertex("b");
+    }
+    */
     /**
      * Rigorous Test :-)
      */
@@ -33,10 +49,13 @@ public class AppTest
     public void annadirVertice(){
         Graph<Integer> g = new Graph();
         assertTrue(g.addVertex(3));
-        assertTrue(g.addVertex(3));
-        
+        assertFalse(g.addVertex(3));
+
+
         Graph<String> gs = new Graph();
         assertTrue(gs.addVertex("a"));
+        String miTexto = "Vertice {a} metido en el grafo";
+        assertEquals(miTexto, gs.toString());
     }
 
     @Test
@@ -49,16 +68,59 @@ public class AppTest
         assertTrue(g.addEdge(3,4));
         
         Graph<String> gs = new Graph();
+        gs.addVertex("a");
+        gs.addVertex("b");
         assertTrue(gs.addEdge("a","b"));
     }
 
     @Test
-    public void obtainAdjacents(){
+    public void obtainAdjacents() throws Exception{
         Graph<Integer> g = new Graph();
+        g.addVertex(3);
+        g.addVertex(9);
+        g.addVertex(4);
         assertTrue(g.addEdge(3,9));
         assertTrue(g.addEdge(3,4));
+        g.obtainAdjacents(3);
+        g.obtainAdjacents(9);
+        g.obtainAdjacents(4);
         
         Graph<String> gs = new Graph();
+        gs.addVertex("a");
+        gs.addVertex("b");
+        gs.addVertex("c");
+        gs.addVertex("j");
         assertTrue(gs.addEdge("a","b"));
+        assertTrue(gs.addEdge("a","c"));
+        assertTrue(gs.addEdge("j","c"));
+        assertTrue(gs.addEdge("c","b"));
+        assertTrue(gs.addEdge("c","c"));
+        gs.obtainAdjacents("a");
+        gs.obtainAdjacents("j");
+        gs.obtainAdjacents("c");
+        gs.toString();
     }
+
+    /*
+    @Test
+    public void onePathFindsAPath(){
+    System.out.println("\nTest onePathFindsAPath");
+    System.out.println("----------------------");
+    // Se construye el grafo.
+    Graph<Integer> g = new Graph<>();
+    g.addEdge(1, 2);
+    g.addEdge(3, 4);
+    g.addEdge(1, 5);
+    g.addEdge(5, 6);
+    g.addEdge(6, 4);
+    // Se construye el camino esperado.
+    List<Integer> expectedPath = new ArrayList<>();
+    expectedPath.add(1);
+    expectedPath.add(5);
+    expectedPath.add(6);
+    expectedPath.add(4);
+    //Se comprueba si el camino devuelto es igual al esperado.
+    assertEquals(expectedPath, g.onePath(1, 4));
+    }
+    */
 }

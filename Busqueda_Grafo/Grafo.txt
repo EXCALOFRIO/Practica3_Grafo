@@ -1,4 +1,1 @@
-Vertice A relacionado H
-Vertice B relacionado J
-Vertice F relacionado B
-Vertice J relacionado F
+Vertice adyacentes[a, b, c, j]
