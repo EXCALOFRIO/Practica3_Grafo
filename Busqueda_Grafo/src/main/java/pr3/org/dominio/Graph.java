@@ -23,13 +23,13 @@ public class Graph<V>{
             return false;
         }
         else{
-            adjacenyList.put(v, new HashSet()); 
-            System.out.println(toString());
+            adjacenyList.put(v, new HashSet());
             return true;
         }
     }
 
     public boolean addEdge(V v1, V v2){
+        
         Set<V> verticesConectados = adjacenyList.get(v1);
         verticesConectados.add(v2);
 
@@ -39,9 +39,10 @@ public class Graph<V>{
     }
 
     public Set<V> obtainAdjacents(V v) throws Exception{
-        System.out.println("Vertice adyacentes" + " del vertice " + v + " " + adjacenyList.get(v));
+       // System.out.println("Vertice adyacentes" + " del vertice " + v + " " + adjacenyList.get(v));
         addArchivo("Vertice adyacentes" + adjacenyList.get(v));
-        return null;
+        System.out.println(toString());
+        return adjacenyList.get(v);
     }
 
     public void addArchivo(String verticesAdycentes){
@@ -67,9 +68,16 @@ public class Graph<V>{
 
     public String toString(){
        String datos = "";
-       for(V v : this.adjacenyList.keySet()){
-        datos = ("Vertice " + "{" + v + "}"  + " metido en el grafo");
-       }
+       String datos1 = "";
+       String datos2 = "";
+       for(V vertice : this.adjacenyList.keySet()){
+        datos1 = ("Vertice " +  adjacenyList.keySet()  + " metido en el grafo");
+        for(V adyacente : this.adjacenyList.get(vertice)){
+            datos2 = (" adyacentes" + " del vertice " + adyacente + " " + adjacenyList.get(adyacente));
+           }
+      }
+       datos = datos1 + datos2;
+       System.out.println(datos);
        return datos;
     }
 

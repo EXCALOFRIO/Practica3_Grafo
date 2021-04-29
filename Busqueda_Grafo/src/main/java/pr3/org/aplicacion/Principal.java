@@ -28,6 +28,5 @@ public class Principal {
         System.out.println("Introduce otro vertice");
         System.out.println(relacion);
         String vertice6 = sc.next();
-        Graph.addVertexOld(vertice1, vertice2, vertice3, vertice4, vertice5, vertice6);
     }
 }
