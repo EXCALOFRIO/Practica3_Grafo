@@ -17,9 +17,6 @@ public class Graph<V> {
 
     private Map<V, Set<V>> adjacenyList = new HashMap();
 
-    Stack st = new Stack();
-    ArrayList<V> path = new ArrayList<V>();
-
     public boolean addVertex(V v) {
 
         if (adjacenyList.keySet().contains(v)) {
@@ -86,26 +83,44 @@ public class Graph<V> {
         for (V vertice : this.adjacenyList.keySet()) {
             datos += (vertice.toString() + adjacenyList.get(vertice).toString() + "\n");
         }
-        // System.out.println(datos);
+        System.out.println(datos);
         return datos;
     }
 
     public List<V> onePath(V v1, V v2) throws Exception {
-        path.add(v1);
+        Stack<V> st = new Stack<V>();
 
-        st.push(adjacenyList.get(v1));
-        while(st!=null){
-            if (String.valueOf(st.peek()).equals(v2)) {
-                
-                path.add((V) st.peek());
-                System.out.print("PATH"+path);
-            }else{
-                adjacenyList.get(st.peek());
+        ArrayList<V> path = new ArrayList<V>();
+
+        path.add(v1);
+        for (V adyacente : adjacenyList.get(v1)) {
+            st.add(adyacente);
+        }
+        boolean encontrado = false;
+        while (!st.empty() || !encontrado) {
+            V verticeVisitando = st.pop();
+            path.add(verticeVisitando);
+            System.out.println(st);
+            System.out.println("PATH " + path);
+            if (verticeVisitando.equals(v2) || verticeVisitando == v2) {
+                encontrado = true;
+
+            } else {
+                for (V adyacente : adjacenyList.get(verticeVisitando)) {
+                    if (path.contains(adyacente)) {
+
+                    } else {
+
+                        st.add(adyacente);
+                    }
+
+                }
             }
         }
-        System.out.print("PATHH de "+v1+" a "+ v2 +" "+path);
 
-        return null;
+        System.out.print("PATHH de " + v1 + " a " + v2 + " " + path);
+
+        return path;
     }
 
 }

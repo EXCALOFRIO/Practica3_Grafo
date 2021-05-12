@@ -92,8 +92,8 @@ public class AppTest {
         g.obtainAdjacents(9);
         g.obtainAdjacents(4);
         g.obtainAdjacents(7);
-        g.onePath(3, 4);
         System.out.println(g.toString());
+        g.onePath(3, 4);
 
         Graph<String> gs = new Graph();
         gs.addVertex("a");
@@ -110,7 +110,6 @@ public class AppTest {
         gs.obtainAdjacents("j");
         gs.obtainAdjacents("c");
         gs.obtainAdjacents("op");
-        gs.onePath("a", "c");
 
         System.out.println(gs.toString());
     }
