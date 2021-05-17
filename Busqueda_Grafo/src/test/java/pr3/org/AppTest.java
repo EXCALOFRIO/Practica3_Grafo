@@ -103,7 +103,8 @@ public class AppTest {
         g.obtainAdjacents(4);
         
         g.toString();
-        g.onePath(1, 7);
+        //g.onePath(1, 7);
+        g.onePath(1, 5);
 
         Graph<String> gs = new Graph();
         gs.addVertex("a");

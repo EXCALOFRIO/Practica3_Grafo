@@ -51,7 +51,7 @@ public class Graph<V> {
             return false;
 
         } else
-        verticesConectados.add(v2);
+            verticesConectados.add(v2);
 
         verticesConectados = adjacenyList.get(v2);
         verticesConectados.add(v1);
@@ -141,7 +141,7 @@ public class Graph<V> {
         ArrayList<V> path = new ArrayList<V>();
         Set<V> verticesVisitados = new HashSet<>();
         System.out.println("Empiezo. ");
-        
+
         path.add(v1);
         for (V adyacente : adjacenyList.get(v1)) {
             st.add(adyacente);
@@ -151,35 +151,57 @@ public class Graph<V> {
         while (!st.empty() && !encontrado) {
             V verticeVisitando = st.pop();
             int verticePath = 0;
-            
+
             verticesVisitados.add(verticeVisitando);
             path.add(verticeVisitando);
-
-            System.out.println(st);
-            System.out.println("PATH " + path);
             if (verticeVisitando.equals(v2) || verticeVisitando == v2) {
-                System.out.println("SE VUELVE TRUE CON "+verticeVisitando);
+                System.out.println("SE VUELVE TRUE CON " + verticeVisitando);
                 encontrado = true;
 
             } else {
                 for (V adyacente : adjacenyList.get(verticeVisitando)) {
                     if (path.contains(adyacente)) {
-                        
+
                     } else {
-                        
-                            st.add(adyacente);
-                        
-                        
+
+                        st.add(adyacente);
+
                     }
 
                 }
             }
 
         }
+        System.out.println(path);
+        if (path.get(path.size() - 1).equals(v2)) {
+            ArrayList<V> pathfinal = new ArrayList<V>();
 
-        
-        System.out.print("PATH FINAL de " + v1 + " a " + v2 + " " + path);
-        return path;
+            pathfinal.add(path.get(path.size() - 1));
+            for (int i = 1; i < path.size(); i++) {
+
+                if (adjacenyList.get(path.get(path.size() - i)).contains(path.get(path.size() - (i + 1)))) {
+                    System.out.println("PARA I "+ i + "===>"+path.get(path.size() - i) + " TIENE RELAcION CON " + path.get(path.size() - (i + 1)));
+                    pathfinal.add(path.get(path.size() - (i + 1)));
+                } else {
+                    if (path.get(i).equals(v1)) {
+
+                    } else {
+                        System.out.println("el que quito " + path.get(path.size() - (i+1)));
+                        path.remove(path.size() - (i+1));
+                        i--;
+                        System.out.println(path);
+                    }
+
+                }
+
+            }
+            System.out.println("EL PATH FINAL CORTO" + pathfinal);
+
+            return pathfinal;
+        } else {
+            return null;
+        }
+
     }
 
 }
