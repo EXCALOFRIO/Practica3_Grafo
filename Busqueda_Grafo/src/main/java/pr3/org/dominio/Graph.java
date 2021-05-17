@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -52,8 +53,12 @@ public class Graph<V> {
 
         } else
             verticesConectados.add(v2);
-
-        verticesConectados = adjacenyList.get(v2);
+            verticesConectados = adjacenyList.get(v2);
+            if(verticesConectados.contains(v1)){
+                System.out.println("\nLa arista " + v1 + "-----" + v2 + " no se puede meter en el grafo porque ya existe.");
+                return false;
+            }else
+        
         verticesConectados.add(v1);
         return true;
 
@@ -75,8 +80,7 @@ public class Graph<V> {
             addArchivo("Vertice adyacentes" + adjacenyList.get(v));
             return adjacenyList.get(v);
         }
-        // System.out.println(toString());
-
+       
     }
 
     public void addArchivo(String verticesAdycentes) {
@@ -88,7 +92,7 @@ public class Graph<V> {
             FileWriter fw = new FileWriter(NOMBRE_FICHERO);
             BufferedWriter bw = new BufferedWriter(fw);
 
-            bw.write(verticesAdycentes);
+            bw.write( " ");
             bw.newLine();
             bw.close();
 
@@ -111,6 +115,7 @@ public class Graph<V> {
         }
         System.out.println(datos);
         return datos;
+        
     }
 
     /******************************************************************
@@ -180,7 +185,7 @@ public class Graph<V> {
             for (int i = 1; i < path.size(); i++) {
 
                 if (adjacenyList.get(path.get(path.size() - i)).contains(path.get(path.size() - (i + 1)))) {
-                    System.out.println("PARA I "+ i + "===>"+path.get(path.size() - i) + " TIENE RELAcION CON " + path.get(path.size() - (i + 1)));
+                    System.out.println("PARA I "+ i + "===>"+path.get(path.size() - i) + " TIENE RELACION CON " + path.get(path.size() - (i + 1)));
                     pathfinal.add(path.get(path.size() - (i + 1)));
                 } else {
                     if (path.get(i).equals(v1)) {
@@ -195,8 +200,9 @@ public class Graph<V> {
                 }
 
             }
-            System.out.println("EL PATH FINAL CORTO" + pathfinal);
-
+            Collections.reverse(pathfinal);
+            System.out.println("EL PATH FINAL CORTO " + pathfinal);
+            
             return pathfinal;
         } else {
             return null;
