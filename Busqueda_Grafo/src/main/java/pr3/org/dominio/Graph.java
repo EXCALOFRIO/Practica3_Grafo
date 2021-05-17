@@ -25,7 +25,7 @@ public class Graph<V> {
      * @return ‘true‘ si no estaba anteriormente y ‘false‘ en caso contrario.
      ******************************************************************/
     public boolean addVertex(V v) {
-
+        
         if (adjacenyList.keySet().contains(v)) {
             System.out.println("No se puede meter el vertice " + "{" + v + "}" + " porque ya esta en el grafo.");
             return false;
@@ -145,22 +145,20 @@ public class Graph<V> {
 
         ArrayList<V> path = new ArrayList<V>();
         Set<V> verticesVisitados = new HashSet<>();
-        System.out.println("Empiezo. ");
 
         path.add(v1);
         for (V adyacente : adjacenyList.get(v1)) {
             st.add(adyacente);
         }
         boolean encontrado = false;
-        // *
+        
         while (!st.empty() && !encontrado) {
             V verticeVisitando = st.pop();
-            int verticePath = 0;
 
             verticesVisitados.add(verticeVisitando);
             path.add(verticeVisitando);
             if (verticeVisitando.equals(v2) || verticeVisitando == v2) {
-                System.out.println("SE VUELVE TRUE CON " + verticeVisitando);
+                //System.out.println("SE VUELVE TRUE CON " + verticeVisitando);
                 encontrado = true;
 
             } else {
@@ -177,7 +175,7 @@ public class Graph<V> {
             }
 
         }
-        System.out.println(path);
+        //System.out.println(path);
         if (path.get(path.size() - 1).equals(v2)) {
             ArrayList<V> pathfinal = new ArrayList<V>();
 
@@ -185,16 +183,16 @@ public class Graph<V> {
             for (int i = 1; i < path.size(); i++) {
 
                 if (adjacenyList.get(path.get(path.size() - i)).contains(path.get(path.size() - (i + 1)))) {
-                    System.out.println("PARA I "+ i + "===>"+path.get(path.size() - i) + " TIENE RELACION CON " + path.get(path.size() - (i + 1)));
+                    //System.out.println("PARA I "+ i + "===>"+path.get(path.size() - i) + " TIENE RELACION CON " + path.get(path.size() - (i + 1)));
                     pathfinal.add(path.get(path.size() - (i + 1)));
                 } else {
                     if (path.get(i).equals(v1)) {
 
                     } else {
-                        System.out.println("el que quito " + path.get(path.size() - (i+1)));
+                        //System.out.println("el que quito " + path.get(path.size() - (i+1)));
                         path.remove(path.size() - (i+1));
                         i--;
-                        System.out.println(path);
+                        //System.out.println(path);
                     }
 
                 }
