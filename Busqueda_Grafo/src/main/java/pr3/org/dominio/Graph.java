@@ -17,6 +17,12 @@ public class Graph<V> {
 
     private Map<V, Set<V>> adjacenyList = new HashMap();
 
+    /******************************************************************
+     * Añade el vértice ‘v‘ al grafo.
+     *
+     * @param v vértice a añadir.
+     * @return ‘true‘ si no estaba anteriormente y ‘false‘ en caso contrario.
+     ******************************************************************/
     public boolean addVertex(V v) {
 
         if (adjacenyList.keySet().contains(v)) {
@@ -28,15 +34,24 @@ public class Graph<V> {
         }
     }
 
+    /******************************************************************
+     * Añade un arco entre los vértices ‘v1‘ y ‘v2‘ al grafo. En caso de que no
+     * exista alguno de los vértices, lo añade también.
+     *
+     * @param v1 el origen del arco.
+     * @param v2 el destino del arco.
+     * @return ‘true‘ si no existía el arco y ‘false‘ en caso contrario.
+     ******************************************************************/
+
     public boolean addEdge(V v1, V v2) {
 
         Set<V> verticesConectados = adjacenyList.get(v1);
         if (verticesConectados.contains(v2)) {
-            System.out.println("La arista " + v1 + "-----" + v2 + " no se puede meter en el grafo porque ya existe.");
+            System.out.println("\nLa arista " + v1 + "-----" + v2 + " no se puede meter en el grafo porque ya existe.");
             return false;
 
         } else
-            verticesConectados.add(v2);
+        verticesConectados.add(v2);
 
         verticesConectados = adjacenyList.get(v2);
         verticesConectados.add(v1);
@@ -44,6 +59,12 @@ public class Graph<V> {
 
     }
 
+    /******************************************************************
+     * Obtiene el conjunto de vértices adyacentes a ‘v‘.
+     *
+     * @param v vértice del que se obtienen los adyacentes.
+     * @return conjunto de vértices adyacentes.
+     ******************************************************************/
     public Set<V> obtainAdjacents(V v) throws Exception {
         // System.out.println("Vertice adyacentes" + " del vertice " + v + " " +
         // adjacenyList.get(v));
@@ -78,6 +99,11 @@ public class Graph<V> {
 
     }
 
+    /******************************************************************
+     * Método ‘toString()‘ reescrito para la clase ‘Grafo.java‘.
+     * 
+     * @return una cadena de caracteres con la lista de adyacencia.
+     ******************************************************************/
     public String toString() {
         String datos = "";
         for (V vertice : this.adjacenyList.keySet()) {
@@ -87,39 +113,72 @@ public class Graph<V> {
         return datos;
     }
 
+    /******************************************************************
+     * Comprueba si el grafo contiene el vértice dado.
+     *
+     * @param v vértice para el que se realiza la comprobación.
+     * @return ‘true‘ si ‘v‘ es un vértice del grafo.
+     ******************************************************************/
+    public boolean containsVertex(V v) {
+        if (addVertex(v)) {
+            return false;
+        } else
+            return true;
+    }
+
+    /******************************************************************
+     * Obtiene, en caso de que exista, un camino entre ‘v1‘ y ‘v2‘. En caso
+     * contrario, devuelve ‘null‘.
+     *
+     * @param v1 el vértice origen.
+     * @param v2 el vértice destino.
+     * @return lista con la secuencia de vértices desde ‘v1‘ hasta ‘v2‘ pasando por
+     *         arcos del grafo.
+     ******************************************************************/
     public List<V> onePath(V v1, V v2) throws Exception {
         Stack<V> st = new Stack<V>();
 
         ArrayList<V> path = new ArrayList<V>();
-
+        Set<V> verticesVisitados = new HashSet<>();
+        System.out.println("Empiezo. ");
+        
         path.add(v1);
         for (V adyacente : adjacenyList.get(v1)) {
             st.add(adyacente);
         }
         boolean encontrado = false;
-        while (!st.empty() || !encontrado) {
+        // *
+        while (!st.empty() && !encontrado) {
             V verticeVisitando = st.pop();
+            int verticePath = 0;
+            
+            verticesVisitados.add(verticeVisitando);
             path.add(verticeVisitando);
+
             System.out.println(st);
             System.out.println("PATH " + path);
             if (verticeVisitando.equals(v2) || verticeVisitando == v2) {
+                System.out.println("SE VUELVE TRUE CON "+verticeVisitando);
                 encontrado = true;
 
             } else {
                 for (V adyacente : adjacenyList.get(verticeVisitando)) {
                     if (path.contains(adyacente)) {
-
+                        
                     } else {
-
-                        st.add(adyacente);
+                        
+                            st.add(adyacente);
+                        
+                        
                     }
 
                 }
             }
+
         }
 
-        System.out.print("PATHH de " + v1 + " a " + v2 + " " + path);
-
+        
+        System.out.print("PATH FINAL de " + v1 + " a " + v2 + " " + path);
         return path;
     }
 

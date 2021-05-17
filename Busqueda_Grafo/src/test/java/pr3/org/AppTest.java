@@ -44,6 +44,7 @@ public class AppTest {
         Graph<Integer> g = new Graph();
         assertTrue(g.addVertex(3));
         assertFalse(g.addVertex(3));
+        assertTrue(g.containsVertex(3));
         g.toString();
 
         Graph<String> gs = new Graph();
@@ -81,19 +82,28 @@ public class AppTest {
         System.out.println("\n\n------TEST------");
         System.out.println("-------3-------");
         Graph<Integer> g = new Graph();
+        g.addVertex(1);
+        g.addVertex(2);
         g.addVertex(3);
-        g.addVertex(9);
         g.addVertex(4);
+        g.addVertex(5);
+        g.addVertex(6);
         g.addVertex(7);
-        assertTrue(g.addEdge(3, 9));
-        assertTrue(g.addEdge(3, 7));
-        assertTrue(g.addEdge(4, 7));
+        g.addVertex(8);
+        assertTrue(g.addEdge(1, 2));
+        assertTrue(g.addEdge(1, 3));
+        assertTrue(g.addEdge(3, 4));
+        assertTrue(g.addEdge(4, 5));
+        assertTrue(g.addEdge(4, 6));
+        assertTrue(g.addEdge(6, 7));
+        assertTrue(g.addEdge(2, 8));
+        g.obtainAdjacents(1);
+        g.obtainAdjacents(2);
         g.obtainAdjacents(3);
-        g.obtainAdjacents(9);
         g.obtainAdjacents(4);
-        g.obtainAdjacents(7);
-        System.out.println(g.toString());
-        g.onePath(3, 4);
+        
+        g.toString();
+        g.onePath(1, 7);
 
         Graph<String> gs = new Graph();
         gs.addVertex("a");
