@@ -18,11 +18,9 @@ import pr3.org.dominio.Graph;
 public class AppTest {
 
     private void inicializarGrafo() {
-        
 
     }
 
-    
     /**
      * Rigorous Test :-)
      */
@@ -97,9 +95,13 @@ public class AppTest {
         g3.obtainAdjacents(4);
         g3.toString();
         g3.onePath(1, 5);
+        List<Integer> expectedPath = new ArrayList<>();
+        expectedPath.add(1);
+        expectedPath.add(2);
+        expectedPath.add(8);
+        assertEquals(expectedPath, g3.onePath(1, 8));
         g3.obtainAdjacents(69);
 
-        
     }
 
     @Test(expected = Exception.class)
@@ -111,7 +113,7 @@ public class AppTest {
         gs4.addVertex("b");
         gs4.addVertex("c");
         gs4.addVertex("j");
-        
+
         assertTrue(gs4.addEdge("a", "b"));
         assertFalse(gs4.addEdge("a", "b"));
         assertTrue(gs4.addEdge("a", "c"));
@@ -119,17 +121,17 @@ public class AppTest {
         assertTrue(gs4.addEdge("j", "c"));
         assertTrue(gs4.addEdge("c", "b"));
         assertFalse(gs4.addEdge("c", "c"));
-        
+
         gs4.obtainAdjacents("a");
         gs4.obtainAdjacents("j");
-        
+
         gs4.obtainAdjacents("c");
-        
+
         gs4.toString();
         gs4.onePath("a", "j");
-        //Despues de este no se puede añadir nada por la excepcion q lanza
+
+        // Despues de este no se puede añadir nada por la excepcion q lanza
         gs4.obtainAdjacents("op");
-        
 
     }
 
@@ -163,7 +165,7 @@ public class AppTest {
         expectedPath.add(5);
         expectedPath.add(6);
         expectedPath.add(4);
-        
+
         // Se comprueba si el camino devuelto es igual al esperado.
         assertEquals(expectedPath, g5.onePath(1, 4));
         g5.toString();
