@@ -21,14 +21,6 @@ public class AppTest {
 
     }
 
-    /**
-     * Rigorous Test :-)
-     */
-    @Test
-    public void shouldAnswerWithTrue() {
-        assertTrue(true);
-    }
-
     @Test
     public void annadirVertice() {
         System.out.println("\n\n------TEST------");
@@ -61,7 +53,7 @@ public class AppTest {
         assertEquals("a[b]\nb[a]\n", gs2.toString());
     }
 
-    @Test(expected = Exception.class)
+    @Test
     public void annadirEdge2() {
         System.out.println("\n\n------TEST------");
         System.out.println("-------2-------");

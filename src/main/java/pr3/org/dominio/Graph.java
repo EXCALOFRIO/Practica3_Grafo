@@ -50,7 +50,7 @@ public class Graph<V> {
 
         Set<V> verticesConectados = adjacenyList.get(v1);
 
-        if (verticesConectados.contains(v2)) {
+        if (!containsVertex(v1) || verticesConectados.contains(v2)) {
             System.out.println("\nLa arista " + v1 + "-----" + v2
                     + " no se puede meter en el grafo porque ya existe, o porque no ha inicializado el vertice");
             return false;
@@ -58,7 +58,7 @@ public class Graph<V> {
         } else
             verticesConectados.add(v2);
         verticesConectados = adjacenyList.get(v2);
-        if (verticesConectados.contains(v1)) {
+        if (!containsVertex(v1) || verticesConectados.contains(v1)) {
             System.out.println("\nLa arista " + v1 + "-----" + v2
                     + " no se puede meter en el grafo porque ya existe, o porque no ha inicializado el vertice");
             return false;
@@ -76,6 +76,7 @@ public class Graph<V> {
      * 
      * @param v vértice del que se obtienen los adyacentes.
      * @return conjunto de vértices adyacentes.
+     * @throws Exception Lanza exception
      ******************************************************************/
     public Set<V> obtainAdjacents(V v) throws Exception {
         // System.out.println("Vertice adyacentes" + " del vertice " + v + " " +
@@ -136,7 +137,10 @@ public class Graph<V> {
      * @return ‘true‘ si ‘v‘ es un vértice del grafo.
      ******************************************************************/
     public boolean containsVertex(V v) {
-        return !addVertex(v);
+        if (adjacenyList.keySet().contains(v)) {
+            return true;
+        }
+        return false;
     }
 
     /******************************************************************
@@ -210,7 +214,7 @@ public class Graph<V> {
 
             }
             Collections.reverse(pathfinal);
-            System.out.println("EL PATH FINAL " + pathfinal);
+            // System.out.println("EL PATH FINAL " + pathfinal);
 
             return pathfinal;
         } else {
