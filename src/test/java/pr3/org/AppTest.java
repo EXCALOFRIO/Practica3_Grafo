@@ -16,8 +16,6 @@ import pr3.org.dominio.Graph;
  */
 public class AppTest {
 
-    
-
     @Test
     public void annadirVertice() {
         Graph<Integer> g = new Graph();
@@ -54,7 +52,7 @@ public class AppTest {
         gs.addVertex("a");
         assertFalse(gs.addEdge("a", "b"));
         assertFalse(gs.addEdge("b", "a"));
-        assertFalse(gs.addEdge("k", "j"));    
+        assertFalse(gs.addEdge("k", "j"));
     }
 
     @Test
@@ -69,7 +67,7 @@ public class AppTest {
         assertFalse(g.addEdge(4, 3));
     }
 
-    @Test (expected = Exception.class)
+    @Test(expected = Exception.class)
     public void obtenerAdyacentes() throws Exception {
         Graph<Integer> g = new Graph();
         g.addVertex(3);
@@ -102,10 +100,8 @@ public class AppTest {
         assertTrue(g.addEdge(2, 8));
         assertNull(g.onePath(69, 8));
         assertNull(g.onePath(69, 68));
-        assertNull(g.onePath(6, 7));  
+        assertNull(g.onePath(6, 7));
     }
-
-
 
     @Test(expected = Exception.class)
     public void obtainAdjacentsString() throws Exception {
@@ -166,5 +162,4 @@ public class AppTest {
         g.toString();
     }
 
-    
 }

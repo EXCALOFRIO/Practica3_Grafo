@@ -138,7 +138,6 @@ public class Graph<V> {
             return null;
         }
         Stack<V> st = new Stack<V>();
-
         ArrayList<V> path = new ArrayList<V>();
         Set<V> verticesVisitados = new HashSet<>();
 
