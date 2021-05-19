@@ -35,7 +35,10 @@ public class AppTest {
         assertTrue(g.containsVertex(3));
         assertFalse(g.containsVertex(69));
     }
-
+    /**
+     * Comprueba annadir eddge funciona con el to string
+     * 
+     */
     @Test
     public void annadirEdge() {
         Graph<String> gs = new Graph();
@@ -46,6 +49,10 @@ public class AppTest {
         assertEquals("a[b]\nb[a]\n", gs.toString());
     }
 
+    /**
+     * Comprueba annadir eddge funciona si los vertices no exixten
+     * 
+     */
     @Test
     public void annadirEdgeError() {
         Graph<String> gs = new Graph();
@@ -55,6 +62,11 @@ public class AppTest {
         assertFalse(gs.addEdge("k", "j"));
     }
 
+    /**
+     * Comprueba si addedge funciona correctamente añadiendo un edge en otro orden o
+     * vertices que no están iniciado
+     * 
+     */
     @Test
     public void annadirEdgeError2() {
         Graph<Integer> g = new Graph();
@@ -67,6 +79,12 @@ public class AppTest {
         assertFalse(g.addEdge(4, 3));
     }
 
+    /**
+     * Comprueba los adyacentes del vertice y si devuelve una excepcion si el
+     * vertice no existe, tambien comprueba el toString
+     * 
+     * @throws Exception
+     */
     @Test(expected = Exception.class)
     public void obtenerAdyacentes() throws Exception {
         Graph<Integer> g = new Graph();
@@ -82,6 +100,10 @@ public class AppTest {
         g.obtainAdjacents(69);
     }
 
+    /**
+     * Este test comprueba si el path devuelve null si el vertice no existe
+     * 
+     */
     @Test
     public void crearOnePathError() throws Exception {
         Graph<Integer> g = new Graph();
@@ -103,6 +125,11 @@ public class AppTest {
         assertNull(g.onePath(6, 7));
     }
 
+    /**
+     * Este test comprueba el to String de los adyacentes
+     * 
+     * @throws Exception
+     */
     @Test(expected = Exception.class)
     public void obtainAdjacentsString() throws Exception {
         Graph<String> gs = new Graph();
