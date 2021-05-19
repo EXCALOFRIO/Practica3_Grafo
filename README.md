@@ -26,7 +26,7 @@ limitations under the License.
 
 ### Ejemplo del juego de la Vida ###
 
-![GRAFO](v250px-6n-graf.svg.png)
+![GRAFO](grafo.png)
 
 ### Como usar ###
 -Para ejecutar el programa hay que pasar los test con el comando mvn test.
