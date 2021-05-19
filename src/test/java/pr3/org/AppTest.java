@@ -2,14 +2,13 @@ package pr3.org;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import org.junit.Before;
 import org.junit.Test;
-
 import pr3.org.dominio.Graph;
 
 /**
@@ -17,123 +16,121 @@ import pr3.org.dominio.Graph;
  */
 public class AppTest {
 
-    private void inicializarGrafo() {
-
-    }
+    
 
     @Test
     public void annadirVertice() {
-        System.out.println("\n\n------TEST------");
-        System.out.println("-------1-------");
-        Graph<Integer> g1 = new Graph();
-        assertTrue(g1.addVertex(3));
-        assertFalse(g1.addVertex(3));
-        g1.toString();
+        Graph<Integer> g = new Graph();
+        assertTrue(g.addVertex(3));
+        assertFalse(g.addVertex(3));
 
-        Graph<String> gs1 = new Graph();
-        assertTrue(gs1.addVertex("a"));
+        Graph<String> gs = new Graph();
+        assertTrue(gs.addVertex("a"));
         String miTexto = "a[]\n";
-        gs1.toString();
+        assertEquals(miTexto, gs.toString());
+    }
 
-        System.out.println("Prueba to String");
-        assertEquals(miTexto, gs1.toString());
-
+    @Test
+    public void containsVertex() {
+        Graph<Integer> g = new Graph();
+        g.addVertex(3);
+        assertTrue(g.containsVertex(3));
+        assertFalse(g.containsVertex(69));
     }
 
     @Test
     public void annadirEdge() {
-        System.out.println("\n\n------TEST------");
-        System.out.println("-------2-------");
+        Graph<String> gs = new Graph();
+        gs.addVertex("a");
+        gs.addVertex("b");
+        assertTrue(gs.addEdge("a", "b"));
 
-        Graph<String> gs2 = new Graph();
-        gs2.addVertex("a");
-        gs2.addVertex("b");
-        assertTrue(gs2.addEdge("a", "b"));
-
-        assertEquals("a[b]\nb[a]\n", gs2.toString());
+        assertEquals("a[b]\nb[a]\n", gs.toString());
     }
 
     @Test
-    public void annadirEdge2() {
-        System.out.println("\n\n------TEST------");
-        System.out.println("-------2-------");
-        Graph<Integer> g2 = new Graph();
-        g2.addVertex(3);
-        g2.addVertex(9);
-        g2.addVertex(4);
-        assertTrue(g2.addEdge(3, 9));
-        assertTrue(g2.addEdge(3, 4));
-        assertFalse(g2.addEdge(3, 9));
-        assertFalse(g2.addEdge(4, 3));
-        g2.toString();
-        // Esperamos que de una excepcion por eso lo hemos puesto en el test
-        g2.addEdge(69, 55);
+    public void annadirEdgeError() {
+        Graph<String> gs = new Graph();
+        gs.addVertex("a");
+        assertFalse(gs.addEdge("a", "b"));
+        assertFalse(gs.addEdge("b", "a"));
+        assertFalse(gs.addEdge("k", "j"));    
     }
 
-    @Test(expected = Exception.class)
-    public void obtainAdjacents() throws Exception {
-        System.out.println("\n\n------TEST------");
-        System.out.println("-------3-------");
-        Graph<Integer> g3 = new Graph();
-        g3.addVertex(1);
-        g3.addVertex(2);
-        g3.addVertex(3);
-        g3.addVertex(4);
-        g3.addVertex(5);
-        g3.addVertex(6);
-        g3.addVertex(7);
-        g3.addVertex(8);
-        assertTrue(g3.addEdge(1, 2));
-        assertTrue(g3.addEdge(1, 3));
-        assertTrue(g3.addEdge(3, 4));
-        assertTrue(g3.addEdge(4, 5));
-        assertTrue(g3.addEdge(4, 6));
-        // assertTrue(g3.addEdge(6, 8));
-        assertTrue(g3.addEdge(2, 8));
-        g3.obtainAdjacents(1);
-        g3.obtainAdjacents(2);
-        g3.obtainAdjacents(3);
-        g3.obtainAdjacents(4);
-        g3.toString();
-        g3.onePath(1, 8);
-        List<Integer> expectedPath = new ArrayList<>();
-        expectedPath.add(1);
-        expectedPath.add(2);
-        expectedPath.add(8);
-        assertEquals(expectedPath, g3.onePath(1, 8));
-        g3.obtainAdjacents(69);
-
+    @Test
+    public void annadirEdgeError2() {
+        Graph<Integer> g = new Graph();
+        g.addVertex(3);
+        g.addVertex(9);
+        g.addVertex(4);
+        assertTrue(g.addEdge(3, 9));
+        assertTrue(g.addEdge(3, 4));
+        assertFalse(g.addEdge(3, 9));
+        assertFalse(g.addEdge(4, 3));
     }
+
+    @Test (expected = Exception.class)
+    public void obtenerAdyacentes() throws Exception {
+        Graph<Integer> g = new Graph();
+        g.addVertex(3);
+        g.addVertex(9);
+        g.addVertex(4);
+        g.addVertex(1);
+        g.addEdge(3, 9);
+        g.addEdge(9, 4);
+        g.obtainAdjacents(3);
+        g.obtainAdjacents(1);
+        assertEquals("1[]\n3[9]\n4[9]\n9[3, 4]\n", g.toString());
+        g.obtainAdjacents(69);
+    }
+
+    @Test
+    public void crearOnePathError() throws Exception {
+        Graph<Integer> g = new Graph();
+        g.addVertex(1);
+        g.addVertex(2);
+        g.addVertex(3);
+        g.addVertex(4);
+        g.addVertex(5);
+        g.addVertex(6);
+        g.addVertex(8);
+        assertTrue(g.addEdge(1, 2));
+        assertTrue(g.addEdge(1, 3));
+        assertTrue(g.addEdge(3, 4));
+        assertTrue(g.addEdge(4, 5));
+        assertTrue(g.addEdge(4, 6));
+        assertTrue(g.addEdge(2, 8));
+        assertNull(g.onePath(69, 8));
+        assertNull(g.onePath(69, 68));
+        assertNull(g.onePath(6, 7));  
+    }
+
+
 
     @Test(expected = Exception.class)
     public void obtainAdjacentsString() throws Exception {
-        System.out.println("\n\n------TEST------");
-        System.out.println("-------4-------");
-        Graph<String> gs4 = new Graph();
-        gs4.addVertex("a");
-        gs4.addVertex("b");
-        gs4.addVertex("c");
-        gs4.addVertex("j");
+        Graph<String> gs = new Graph();
+        gs.addVertex("a");
+        gs.addVertex("b");
+        gs.addVertex("c");
+        gs.addVertex("j");
+        gs.addVertex("ju");
 
-        assertTrue(gs4.addEdge("a", "b"));
-        assertFalse(gs4.addEdge("a", "b"));
-        assertTrue(gs4.addEdge("a", "c"));
-        assertFalse(gs4.addEdge("a", "c"));
-        assertTrue(gs4.addEdge("j", "c"));
-        assertTrue(gs4.addEdge("c", "b"));
-        assertFalse(gs4.addEdge("c", "c"));
+        assertTrue(gs.addEdge("a", "b"));
+        assertFalse(gs.addEdge("a", "b"));
+        assertTrue(gs.addEdge("a", "c"));
+        assertFalse(gs.addEdge("a", "c"));
+        assertTrue(gs.addEdge("j", "c"));
+        assertTrue(gs.addEdge("c", "b"));
+        assertFalse(gs.addEdge("c", "c"));
 
-        gs4.obtainAdjacents("a");
-        gs4.obtainAdjacents("j");
-
-        gs4.obtainAdjacents("c");
-
-        gs4.toString();
-        gs4.onePath("a", "j");
-
+        gs.obtainAdjacents("a");
+        gs.obtainAdjacents("j");
+        gs.obtainAdjacents("c");
+        gs.toString();
+        gs.onePath("a", "j");
         // Despues de este no se puede añadir nada por la excepcion q lanza
-        gs4.obtainAdjacents("op");
-
+        gs.obtainAdjacents("op");
     }
 
     /**
@@ -144,22 +141,19 @@ public class AppTest {
      */
     @Test
     public void onePathFindsAPath() throws Exception {
-        System.out.println("\nTest onePathFindsAPath");
-        System.out.println("----------------------");
-        System.out.println("-------5-------");
         // Se construye el grafo.
-        Graph<Integer> g5 = new Graph<>();
-        g5.addVertex(1);
-        g5.addVertex(2);
-        g5.addVertex(3);
-        g5.addVertex(4);
-        g5.addVertex(5);
-        g5.addVertex(6);
-        g5.addEdge(1, 2);
-        g5.addEdge(3, 4);
-        g5.addEdge(1, 5);
-        g5.addEdge(5, 6);
-        g5.addEdge(6, 4);
+        Graph<Integer> g = new Graph<>();
+        g.addVertex(1);
+        g.addVertex(2);
+        g.addVertex(3);
+        g.addVertex(4);
+        g.addVertex(5);
+        g.addVertex(6);
+        g.addEdge(1, 2);
+        g.addEdge(3, 4);
+        g.addEdge(1, 5);
+        g.addEdge(5, 6);
+        g.addEdge(6, 4);
         // Se construye el camino esperado.
         List<Integer> expectedPath = new ArrayList<>();
         expectedPath.add(1);
@@ -168,18 +162,9 @@ public class AppTest {
         expectedPath.add(4);
 
         // Se comprueba si el camino devuelto es igual al esperado.
-        assertEquals(expectedPath, g5.onePath(1, 4));
-        g5.toString();
+        assertEquals(expectedPath, g.onePath(1, 4));
+        g.toString();
     }
 
-    @Test
-    public void containsVertex() {
-        System.out.println("\n\n------TEST------");
-        System.out.println("-------6-------");
-        Graph<Integer> g1 = new Graph();
-        g1.addVertex(3);
-        assertTrue(g1.containsVertex(3));
-        assertFalse(g1.containsVertex(69));
-        g1.toString();
-    }
+    
 }

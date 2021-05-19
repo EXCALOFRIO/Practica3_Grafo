@@ -27,7 +27,8 @@ public class Graph<V> {
     public boolean addVertex(V v) {
 
         if (adjacenyList.keySet().contains(v)) {
-            System.out.println("No se puede meter el vertice " + "{" + v + "}" + " porque ya esta en el grafo.");
+            // System.out.println("No se puede meter el vertice " + "{" + v + "}" + " porque
+            // ya esta en el grafo.");
             return false;
         } else {
             adjacenyList.put(v, new HashSet());
@@ -51,16 +52,16 @@ public class Graph<V> {
         Set<V> verticesConectados = adjacenyList.get(v1);
 
         if (!containsVertex(v1) || verticesConectados.contains(v2)) {
-            System.out.println("\nLa arista " + v1 + "-----" + v2
-                    + " no se puede meter en el grafo porque ya existe, o porque no ha inicializado el vertice");
+            // System.out.println("\nLa arista " + v1 + "-----" + v2 + " no se puede meter
+            // en el grafo porque ya existe, o porque no ha inicializado el vertice");
             return false;
 
         } else
             verticesConectados.add(v2);
         verticesConectados = adjacenyList.get(v2);
-        if (!containsVertex(v1) || verticesConectados.contains(v1)) {
-            System.out.println("\nLa arista " + v1 + "-----" + v2
-                    + " no se puede meter en el grafo porque ya existe, o porque no ha inicializado el vertice");
+        if (!containsVertex(v2) || verticesConectados.contains(v1)) {
+            // System.out.println("\nLa arista " + v1 + "-----" + v2+ " no se puede meter en
+            // el grafo porque ya existe, o porque no ha inicializado el vertice");
             return false;
         } else
 
@@ -85,28 +86,7 @@ public class Graph<V> {
         if (adjacenyList.get(v) == null) {
             throw new Exception("No existe el vértice");
         } else {
-            addArchivo("Vertice adyacentes" + adjacenyList.get(v));
             return adjacenyList.get(v);
-        }
-
-    }
-
-    public void addArchivo(String verticesAdycentes) {
-        // AÑADIR VERTICE
-
-        try {
-            String NOMBRE_FICHERO = "Grafo.txt";
-
-            FileWriter fw = new FileWriter(NOMBRE_FICHERO);
-            BufferedWriter bw = new BufferedWriter(fw);
-
-            bw.write(" ");
-            bw.newLine();
-            bw.close();
-
-        } catch (IOException e) {
-            System.out.println("NO SE HA PODIDO GENERAR EL GRAFO");
-            e.printStackTrace();
         }
 
     }
@@ -123,9 +103,7 @@ public class Graph<V> {
         for (V vertice : this.adjacenyList.keySet()) {
             datos += (vertice.toString() + adjacenyList.get(vertice).toString() + "\n");
         }
-        System.out.println(datos);
         return datos;
-
     }
 
     /******************************************************************
@@ -155,6 +133,10 @@ public class Graph<V> {
      *         arcos del grafo.
      ******************************************************************/
     public List<V> onePath(V v1, V v2) throws Exception {
+        if (!adjacenyList.keySet().contains(v1) || !adjacenyList.keySet()
+                .contains(v2)/* ||(adjacenyList.get(v1) == null)||(adjacenyList.get(v2) == null) */) {
+            return null;
+        }
         Stack<V> st = new Stack<V>();
 
         ArrayList<V> path = new ArrayList<V>();
