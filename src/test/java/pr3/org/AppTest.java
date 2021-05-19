@@ -36,7 +36,6 @@ public class AppTest {
         Graph<Integer> g1 = new Graph();
         assertTrue(g1.addVertex(3));
         assertFalse(g1.addVertex(3));
-        assertTrue(g1.containsVertex(3));
         g1.toString();
 
         Graph<String> gs1 = new Graph();
@@ -53,13 +52,6 @@ public class AppTest {
     public void annadirEdge() {
         System.out.println("\n\n------TEST------");
         System.out.println("-------2-------");
-        Graph<Integer> g2 = new Graph();
-        g2.addVertex(3);
-        g2.addVertex(9);
-        g2.addVertex(4);
-        assertTrue(g2.addEdge(3, 9));
-        assertTrue(g2.addEdge(3, 4));
-        g2.toString();
 
         Graph<String> gs2 = new Graph();
         gs2.addVertex("a");
@@ -67,6 +59,23 @@ public class AppTest {
         assertTrue(gs2.addEdge("a", "b"));
 
         assertEquals("a[b]\nb[a]\n", gs2.toString());
+    }
+
+    @Test(expected = Exception.class)
+    public void annadirEdge2() {
+        System.out.println("\n\n------TEST------");
+        System.out.println("-------2-------");
+        Graph<Integer> g2 = new Graph();
+        g2.addVertex(3);
+        g2.addVertex(9);
+        g2.addVertex(4);
+        assertTrue(g2.addEdge(3, 9));
+        assertTrue(g2.addEdge(3, 4));
+        assertFalse(g2.addEdge(3, 9));
+        assertFalse(g2.addEdge(4, 3));
+        g2.toString();
+        // Esperamos que de una excepcion por eso lo hemos puesto en el test
+        g2.addEdge(69, 55);
     }
 
     @Test(expected = Exception.class)
@@ -87,7 +96,7 @@ public class AppTest {
         assertTrue(g3.addEdge(3, 4));
         assertTrue(g3.addEdge(4, 5));
         assertTrue(g3.addEdge(4, 6));
-        //assertTrue(g3.addEdge(6, 8));
+        // assertTrue(g3.addEdge(6, 8));
         assertTrue(g3.addEdge(2, 8));
         g3.obtainAdjacents(1);
         g3.obtainAdjacents(2);
@@ -169,5 +178,16 @@ public class AppTest {
         // Se comprueba si el camino devuelto es igual al esperado.
         assertEquals(expectedPath, g5.onePath(1, 4));
         g5.toString();
+    }
+
+    @Test
+    public void containsVertex() {
+        System.out.println("\n\n------TEST------");
+        System.out.println("-------6-------");
+        Graph<Integer> g1 = new Graph();
+        g1.addVertex(3);
+        assertTrue(g1.containsVertex(3));
+        assertFalse(g1.containsVertex(69));
+        g1.toString();
     }
 }

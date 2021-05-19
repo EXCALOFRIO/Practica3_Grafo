@@ -49,15 +49,18 @@ public class Graph<V> {
     public boolean addEdge(V v1, V v2) {
 
         Set<V> verticesConectados = adjacenyList.get(v1);
+
         if (verticesConectados.contains(v2)) {
-            System.out.println("\nLa arista " + v1 + "-----" + v2 + " no se puede meter en el grafo porque ya existe.");
+            System.out.println("\nLa arista " + v1 + "-----" + v2
+                    + " no se puede meter en el grafo porque ya existe, o porque no ha inicializado el vertice");
             return false;
 
         } else
             verticesConectados.add(v2);
         verticesConectados = adjacenyList.get(v2);
         if (verticesConectados.contains(v1)) {
-            System.out.println("\nLa arista " + v1 + "-----" + v2 + " no se puede meter en el grafo porque ya existe.");
+            System.out.println("\nLa arista " + v1 + "-----" + v2
+                    + " no se puede meter en el grafo porque ya existe, o porque no ha inicializado el vertice");
             return false;
         } else
 
@@ -133,7 +136,7 @@ public class Graph<V> {
      * @return ‘true‘ si ‘v‘ es un vértice del grafo.
      ******************************************************************/
     public boolean containsVertex(V v) {
-        return addVertex(v);
+        return !addVertex(v);
     }
 
     /******************************************************************

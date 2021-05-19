@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="pr3.org.AppTest" time="0.412" tests="6" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="pr3.org.AppTest" time="1.336" tests="8" errors="0" skipped="0" failures="0">
   <properties>
     <property name="sun.desktop" value="windows"/>
     <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
@@ -7,7 +7,7 @@
     <property name="java.specification.version" value="1.8"/>
     <property name="sun.cpu.isalist" value="amd64"/>
     <property name="sun.jnu.encoding" value="Cp1252"/>
-    <property name="java.class.path" value="C:\Users\Alejandro\OneDrive - Fundación Universitaria San Pablo CEU\Escritorio\CEU\CEU_UNI\Java\Practica3_Grafo\Busqueda_Grafo\target\test-classes;C:\Users\Alejandro\OneDrive - Fundación Universitaria San Pablo CEU\Escritorio\CEU\CEU_UNI\Java\Practica3_Grafo\Busqueda_Grafo\target\classes;C:\Users\Alejandro\.m2\repository\junit\junit\4.11\junit-4.11.jar;C:\Users\Alejandro\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;"/>
+    <property name="java.class.path" value="C:\Users\Alejandro\OneDrive - Fundación Universitaria San Pablo CEU\Escritorio\CEU\CEU_UNI\SEGUNDO CUATRI\Programacion II\Practica3_Grafo\target\test-classes;C:\Users\Alejandro\OneDrive - Fundación Universitaria San Pablo CEU\Escritorio\CEU\CEU_UNI\SEGUNDO CUATRI\Programacion II\Practica3_Grafo\target\classes;C:\Users\Alejandro\.m2\repository\junit\junit\4.11\junit-4.11.jar;C:\Users\Alejandro\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;"/>
     <property name="java.vm.vendor" value="Oracle Corporation"/>
     <property name="sun.arch.data.model" value="64"/>
     <property name="user.variant" value=""/>
@@ -18,20 +18,20 @@
     <property name="user.country" value="ES"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.8.0_281\jre\bin"/>
-    <property name="sun.java.command" value="C:\Users\ALEJAN~1\AppData\Local\Temp\surefire701638995018594086\surefirebooter1192798448853692161.jar C:\Users\Alejandro\AppData\Local\Temp\surefire701638995018594086 2021-05-19T08-24-44_271-jvmRun1 surefire1509696475154680958tmp surefire_02849283428490755024tmp"/>
-    <property name="surefire.test.class.path" value="C:\Users\Alejandro\OneDrive - Fundación Universitaria San Pablo CEU\Escritorio\CEU\CEU_UNI\Java\Practica3_Grafo\Busqueda_Grafo\target\test-classes;C:\Users\Alejandro\OneDrive - Fundación Universitaria San Pablo CEU\Escritorio\CEU\CEU_UNI\Java\Practica3_Grafo\Busqueda_Grafo\target\classes;C:\Users\Alejandro\.m2\repository\junit\junit\4.11\junit-4.11.jar;C:\Users\Alejandro\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;"/>
+    <property name="sun.java.command" value="C:\Users\ALEJAN~1\AppData\Local\Temp\surefire2163382814254148086\surefirebooter6096259872349343759.jar C:\Users\Alejandro\AppData\Local\Temp\surefire2163382814254148086 2021-05-19T12-01-42_276-jvmRun1 surefire1143785630784155230tmp surefire_07696217953545768060tmp"/>
+    <property name="surefire.test.class.path" value="C:\Users\Alejandro\OneDrive - Fundación Universitaria San Pablo CEU\Escritorio\CEU\CEU_UNI\SEGUNDO CUATRI\Programacion II\Practica3_Grafo\target\test-classes;C:\Users\Alejandro\OneDrive - Fundación Universitaria San Pablo CEU\Escritorio\CEU\CEU_UNI\SEGUNDO CUATRI\Programacion II\Practica3_Grafo\target\classes;C:\Users\Alejandro\.m2\repository\junit\junit\4.11\junit-4.11.jar;C:\Users\Alejandro\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
     <property name="user.home" value="C:\Users\Alejandro"/>
     <property name="user.language" value="es"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
     <property name="java.home" value="C:\Program Files\Java\jdk1.8.0_281\jre"/>
-    <property name="basedir" value="C:\Users\Alejandro\OneDrive - Fundación Universitaria San Pablo CEU\Escritorio\CEU\CEU_UNI\Java\Practica3_Grafo\Busqueda_Grafo"/>
+    <property name="basedir" value="C:\Users\Alejandro\OneDrive - Fundación Universitaria San Pablo CEU\Escritorio\CEU\CEU_UNI\SEGUNDO CUATRI\Programacion II\Practica3_Grafo"/>
     <property name="file.separator" value="\"/>
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
-    <property name="surefire.real.class.path" value="C:\Users\ALEJAN~1\AppData\Local\Temp\surefire701638995018594086\surefirebooter1192798448853692161.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\ALEJAN~1\AppData\Local\Temp\surefire2163382814254148086\surefirebooter6096259872349343759.jar"/>
     <property name="sun.boot.class.path" value="C:\Program Files\Java\jdk1.8.0_281\jre\lib\resources.jar;C:\Program Files\Java\jdk1.8.0_281\jre\lib\rt.jar;C:\Program Files\Java\jdk1.8.0_281\jre\lib\sunrsasign.jar;C:\Program Files\Java\jdk1.8.0_281\jre\lib\jsse.jar;C:\Program Files\Java\jdk1.8.0_281\jre\lib\jce.jar;C:\Program Files\Java\jdk1.8.0_281\jre\lib\charsets.jar;C:\Program Files\Java\jdk1.8.0_281\jre\lib\jfr.jar;C:\Program Files\Java\jdk1.8.0_281\jre\classes"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
@@ -47,7 +47,7 @@
     <property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/"/>
     <property name="java.io.tmpdir" value="C:\Users\ALEJAN~1\AppData\Local\Temp\"/>
     <property name="java.version" value="1.8.0_281"/>
-    <property name="user.dir" value="C:\Users\Alejandro\OneDrive - Fundación Universitaria San Pablo CEU\Escritorio\CEU\CEU_UNI\Java\Practica3_Grafo\Busqueda_Grafo"/>
+    <property name="user.dir" value="C:\Users\Alejandro\OneDrive - Fundación Universitaria San Pablo CEU\Escritorio\CEU\CEU_UNI\SEGUNDO CUATRI\Programacion II\Practica3_Grafo"/>
     <property name="os.arch" value="amd64"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
     <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob"/>
@@ -60,10 +60,12 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="52.0"/>
   </properties>
-  <testcase name="obtainAdjacentsString" classname="pr3.org.AppTest" time="0.146"/>
+  <testcase name="obtainAdjacentsString" classname="pr3.org.AppTest" time="0.384"/>
   <testcase name="shouldAnswerWithTrue" classname="pr3.org.AppTest" time="0"/>
-  <testcase name="annadirVertice" classname="pr3.org.AppTest" time="0.044"/>
-  <testcase name="annadirEdge" classname="pr3.org.AppTest" time="0.01"/>
-  <testcase name="onePathFindsAPath" classname="pr3.org.AppTest" time="0.049"/>
-  <testcase name="obtainAdjacents" classname="pr3.org.AppTest" time="0.047"/>
+  <testcase name="annadirVertice" classname="pr3.org.AppTest" time="0.05"/>
+  <testcase name="annadirEdge" classname="pr3.org.AppTest" time="0.017"/>
+  <testcase name="containsVertex" classname="pr3.org.AppTest" time="0.052"/>
+  <testcase name="onePathFindsAPath" classname="pr3.org.AppTest" time="0.063"/>
+  <testcase name="annadirEdge2" classname="pr3.org.AppTest" time="0.087"/>
+  <testcase name="obtainAdjacents" classname="pr3.org.AppTest" time="0.551"/>
 </testsuite>
